@@ -172,7 +172,7 @@ jobs:
       - run: |
           git clone https://github.com/crystal-lang/distribution-scripts.git ~/distribution-scripts
           cd ~/distribution-scripts
-          git checkout 1f2d5d937d431ff86355a276fc259478b3df73ac
+          git checkout f9cc295f92df093c61e17a809a81a3c8f5f93c96
       # persist relevant information for build process
       - run: |
           cd ~/distribution-scripts
