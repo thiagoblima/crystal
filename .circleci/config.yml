@@ -172,7 +172,7 @@ jobs:
       - run: |
           git clone https://github.com/crystal-lang/distribution-scripts.git ~/distribution-scripts
           cd ~/distribution-scripts
-          git checkout f9cc295f92df093c61e17a809a81a3c8f5f93c96
+          git checkout 64b678fa6d6e0519fd487a15cc435167e4fe26ae
       # persist relevant information for build process
       - run: |
           cd ~/distribution-scripts
@@ -677,24 +677,29 @@ workflows:
 
   maintenance_release:
     jobs:
-      - test_linux:
+      # - test_linux:
+      #     filters: &maintenance
+      #       branches:
+      #         only:
+      #           - /release\/.+/
+      #           - /.*\bci\b.*/
+      # - test_linux32_std:
+      #     filters: *maintenance
+      # - test_alpine:
+      #     filters: *maintenance
+      # - test_darwin:
+      #     filters: *maintenance
+      # - test_preview_mt:
+      #     filters: *maintenance
+      # - check_format:
+      #     filters: *maintenance
+      - prepare_common:
+          # filters: *maintenance
           filters: &maintenance
             branches:
               only:
                 - /release\/.+/
                 - /.*\bci\b.*/
-      - test_linux32_std:
-          filters: *maintenance
-      - test_alpine:
-          filters: *maintenance
-      - test_darwin:
-          filters: *maintenance
-      - test_preview_mt:
-          filters: *maintenance
-      - check_format:
-          filters: *maintenance
-      - prepare_common:
-          filters: *maintenance
       - prepare_maintenance:
           filters: *maintenance
           requires:
